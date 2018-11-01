@@ -1,0 +1,12 @@
+import vikingos.*
+import expediciones.*
+
+describe "tests"{
+	const capital = new Capital(2)
+	const expedicion = new Expedicion(capital)
+	const soldado = new Soldado()
+	const vikingoMediaSoldado = new Vikingo(karl,soldado)
+	
+	test ""
+	
+}
