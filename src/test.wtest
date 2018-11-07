@@ -2,11 +2,32 @@ import vikingos.*
 import expediciones.*
 
 describe "tests"{
-	const capital = new Capital(2)
+	const capital = new Capital(5)
 	const expedicion = new Expedicion(capital)
-	const soldado = new Soldado()
+	const soldado = new Soldado(5,30)
 	const vikingoMediaSoldado = new Vikingo(karl,soldado)
+	const vikingoEsclavoSoldado = new Vikingo(jarl,soldado)
+	const granjero = new Granjero(2,10)
+	const ragnar = new Vikingo(karl,granjero)
 	
-	test ""
+	test "vikingo no puede subir a la expedicion"{
+		assert.throwsExceptionWithMessage("No es productivo para la expedicion",{expedicion.subirVikingo(vikingoEsclavoSoldado)})
+	}
+	
+	test "invadir la capital con dos vikingos vale la pena"{
+		expedicion.subirVikingo(vikingoMediaSoldado)
+		assert.that(expedicion.valeLaPena())
+	}
+	
+	test "ragnar escala socialmente"{
+		ragnar.ascender()
+		assert.equals(thrall,ragnar.casta())
+	}
+	
+	test "invadir"{
+		expedicion.subirVikingo(ragnar)
+		expedicion.invadir()
+		assert.equals(5,ragnar.oro())
+	}
 	
 }

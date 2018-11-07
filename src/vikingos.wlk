@@ -3,18 +3,30 @@ import expediciones.*
 class Vikingo{
 	var casta
 	var tipo
+	var oro = 0
 	
 	constructor (unaCasta,unTipo){
 		casta=unaCasta
 		tipo=unTipo
 	}
 	
-	method esProductivo(){
+	method casta(){
+		return casta
+	}
+	
+	method puedeSubir(){
 		return tipo.esProductivo() && casta.puedeIr(tipo)
 	}
 	
 	method ascender(){
 		casta=casta.ascender(tipo)
+	}
+	
+	method sumarOro(cant){
+		oro+=cant
+	}
+	method oro(){
+		return oro
 	}
 }
 

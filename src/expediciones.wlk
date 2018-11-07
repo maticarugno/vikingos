@@ -9,7 +9,7 @@ class Expedicion {
 	}
 	
 	method subirVikingo(unVikingo){
-		if (unVikingo.esProductivo()){
+		if (unVikingo.puedeSubir()){
 			vikingos.add(unVikingo)
 		}else{
 			error.throwWithMessage("No es productivo para la expedicion")
@@ -22,6 +22,13 @@ class Expedicion {
 	
 	method cantVikingos(){
 		return vikingos.size()
+	}
+	method invadir(){
+		vikingos.forEach({unVikingo=>unVikingo.sumarOro(self.oroGanadoPorVikingo())})
+	}
+	
+	method oroGanadoPorVikingo(){
+		return objetivo.botin(self.cantVikingos())/self.cantVikingos()
 	}
 	
 }
